@@ -1,0 +1,37 @@
+{
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": false,
+    "editor.tabSize": 2,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "html.format.enable": true,
+    "html.format.indentHandlebars": true,
+    "html.format.maxPreserveNewLines": 0,
+    "dart.sdkPath": "/home/peter/dev/solus/dart-sdk/sdk/out/ReleaseX64/dart-sdk",
+    "window.titleBarStyle": "custom",
+    "terminal.integrated.rendererType": "dom",
+    "files.watcherExclude": {
+        "**/node_modules/*/**": true,
+        "**/bower_components/*/**": true,
+        "**/tmp/*/**": true,
+        "**/.git/*/**": true,
+        "**/dist/*/**": true
+    },
+    "files.exclude": {
+        "**/node_modules/*/**": true,
+        "**/bower_components/*/**": true,
+        "**/tmp/*/**": true,
+        "**/.git/*/**": true,
+        "**/dist/*/**": true
+    },
+    "search.exclude": {
+        "**/node_modules/*/**": true,
+        "**/bower_components/*/**": true,
+        "**/tmp/*/**": true,
+        "**/.git/*/**": true,
+        "**/dist/*/**": true
+    },
+    "workbench.colorTheme": "Solarized Dark"
+}
