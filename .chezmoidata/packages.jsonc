@@ -1,10 +1,11 @@
 {
-	"packages": {
-		"darwin": {
-			"brews": [
-				"git",
-				"mas"
-			]
-		}
-	}
+  "packages": {
+    "darwin": {
+      "brews": [
+        "git",
+        "mas"
+      ],
+      "cascs": []
+    }
+  }
 }
