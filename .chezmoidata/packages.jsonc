@@ -3,9 +3,10 @@
     "darwin": {
       "brews": [
         "git",
-        "mas"
+        "mas",
+        "chezmoi"
       ],
-      "cascs": []
+      "casks": []
     }
   }
 }
