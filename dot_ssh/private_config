@@ -1,9 +1,0 @@
-Include /Users/peter/.colima/ssh_config
-
-# CodeSandbox SSH Integration
-Include "/Users/peter/.ssh/csb/config"
-# End of CodeSandbox SSH Integration
-# To use ScaleFT proxycommand, add this configuration block to your $HOME/.ssh/config
-Match exec "/usr/local/bin/sft resolve -q  %h"
-    ProxyCommand "/usr/local/bin/sft" proxycommand  %h
-    UserKnownHostsFile "/Users/peter/Library/Application Support/ScaleFT/proxycommand_known_hosts"
