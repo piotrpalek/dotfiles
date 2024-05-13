@@ -1,0 +1,10 @@
+{
+	"packages": {
+		"darwin": {
+			"brews": [
+				"git",
+				"mas"
+			]
+		}
+	}
+}
