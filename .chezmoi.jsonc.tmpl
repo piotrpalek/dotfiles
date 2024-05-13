@@ -1,12 +1,14 @@
 {{ $bwEmail := promptString "What is your bitwarden email address" }}
 {{ $ghEmail := promptString "What is your github email address (for .gitconfig)" }}
 {{ $sshEmail := promptString "What is your ssh email" }}
+{{ $hostname := promptString "What is your hostname" }}
 {
 	"data": {
 		"githubUsername": "piotrpalek",
 		"githubCommitEmail": {{ $ghEmail | quote }},
 		"sshEmail": {{ $sshEmail | quote }},
-		"bitwardenEmail": {{ $bwEmail | quote }}
+		"bitwardenEmail": {{ $bwEmail | quote }},
+    "newHostname": {{ $hostname | quote }}
 	}
 }
 {{ writeToStdout "Config file generated at " .chezmoi.configFile "\n" -}}
