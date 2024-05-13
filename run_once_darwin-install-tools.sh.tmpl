@@ -3,6 +3,8 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install gh
 brew install zsh
+brew install bitwarden-cli
+export BW_SESSION=$(bw login $BITWARDEN_EMAIL --raw)
 chsh -s $(which zsh)
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 gh auth login

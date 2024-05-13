@@ -1,0 +1,7 @@
+{{ $bwEmail := promptStringOnce . "email" "What is your bitwarden email address" }}
+{
+	"data": {
+		"githubUsername": "piotrpalek",
+		"bitwardenEmail": {{ $bwEmail | quote }}
+	}
+}
