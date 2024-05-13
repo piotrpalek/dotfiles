@@ -13,3 +13,6 @@ fi
 # Customize to your needs...
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# disable autocorrection
+unsetopt correct
