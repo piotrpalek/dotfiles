@@ -1,0 +1,59 @@
+[user]
+  name = Piotr P
+  email = piotr.palek@housecallpro.com
+[alias]
+  list-branches = branch --sort=committerdate
+  co = checkout
+  st = status -s
+  ci = commit
+  up = pull
+  br = branch
+  df = diff
+  lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -p --stat
+  lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -p
+  wc = whatchanged -p --abbrev-commit --pretty=medium
+  ama = "!git add --all && git commit --amend"
+  ignore = update-index --skip-worktree
+  unignore = update-index --no-skip-worktree
+  ignored = !git ls-files -v | grep \"^S\"
+  delete-merged-dev = "!git branch --merged dev | grep -v -e 'dev' -e '\\*' | xargs -n 1 git branch -d && git remote prune origin"
+  setup-fetching-prs = "!git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*' && git fetch origin"
+  sync = !sh -c "git checkout --quiet HEAD; git fetch origin dev:dev; git checkout --quiet -"
+
+[help]
+  autocorrect = 1
+[color]
+  interactive = true
+  diff = true
+  status = true
+  branch = true
+  ui = true
+  pager = true
+[push]
+  default = current
+[branch]
+  autosetuprebase = always
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+  autocrlf = input
+[apply]
+  whitespace = nowarn
+[format]
+#  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+  pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[log]
+	date = iso
+[pull]
+	rebase = true
