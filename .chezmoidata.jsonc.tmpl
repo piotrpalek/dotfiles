@@ -1,7 +1,11 @@
 {{ $bwEmail := promptStringOnce . "email" "What is your bitwarden email address" }}
+{{ $ghEmail := promptStringOnce . "email" "What is your github email address (for .gitconfig)" }}
+{{ $sshEmail := promptStringOnce . "email" "What is your ssh email" }}
 {
 	"data": {
 		"githubUsername": "piotrpalek",
+		"githubCommitEmail": {{ $ghEmail | quote }},
+		"sshEmail": {{ $sshEmail | quote }},
 		"bitwardenEmail": {{ $bwEmail | quote }}
 	}
 }
