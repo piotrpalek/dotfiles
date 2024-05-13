@@ -5,7 +5,7 @@ brew install gh
 brew install zsh
 brew install bitwarden-cli
 brew install asdf
-export BW_SESSION=$(bw login $BITWARDEN_EMAIL --raw)
+export BW_SESSION=$(bw login {{ .general.bitwardenEmail }} --raw)
 chsh -s $(which zsh)
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 gh auth login
