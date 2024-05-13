@@ -8,5 +8,5 @@ brew install asdf
 export BW_SESSION=$(bw login {{ .bitwardenEmail }} --raw)
 chsh -s $(which zsh)
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-gh auth login
+gh auth login -h github.com -s admin:public_key -p ssh --skip-ssh-key -w
 {{ end -}}
