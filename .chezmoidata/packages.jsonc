@@ -9,10 +9,28 @@
       ],
       "casks": [
         "visual-studio-code",
-        "bartender"
+        "bartender",
+        "enjoyable",
+        "anki",
+        "bitwarden",
+        "beeper",
+        "arc",
+        "rustdesk",
+        "numi",
+        "obsidian",
+        "key-codes",
+        "lunar",
+        "the-unarchiver",
+        "alt-tab",
+        "shottr",
+        "steam"
       ],
       "mas": [
-        "1352778147" // bitwarden
+        "1352778147", // bitwarden
+        "937984704", // amphetamine
+        "1596283165", // rcmd
+        "-2145599564", // grila
+        "1607635845" // velja
       ]
     }
   }
