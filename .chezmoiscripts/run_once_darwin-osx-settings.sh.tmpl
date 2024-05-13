@@ -60,7 +60,10 @@ defaults write com.apple.helpviewer DevMode -bool true
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # show battery percentage
-defaults write /Users/$(id -un)/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# Reduce motion
+defaults write com.apple.universalaccess reduceMotion -int 1
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -134,7 +137,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+# chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
@@ -192,7 +195,8 @@ defaults write com.apple.dock mru-spaces -bool false
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# sudo /usr/libexec/PlistBuddy -c "Add :Exclusions:0 string '/Volumes'" /System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist
+sudo defaults write /Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist Exclusions -array-add '/Volumes'
 
 # Change indexing order and disable some search results
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
@@ -239,9 +243,6 @@ sudo mdutil -E / > /dev/null
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -349,7 +350,7 @@ defaults -currentHost write com.apple.Spotlight MenuItemHidden -int 1
 ################################################################################
 
 # Key repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 3
 
 # Delay until repeat
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
@@ -381,15 +382,9 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" \
-	"cfprefsd" \
-	"Dock" \
-	"Finder" \
-	"Messages" \
-	"Photos" \
-	"SystemUIServer" \
-	; do
-	killall "${app}" &> /dev/null
+for app in "Dock" "Finder" "cfprefsd" "Messages" "Photos" "SystemUIServer"; do
+  killall "${app}" > /dev/null 2>&1
+done
 
 # Done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
