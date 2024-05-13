@@ -1,4 +1,5 @@
 #!/bin/zsh
 
 # zshrc hash: {{ include "private_dot_zshrc" | sha256sum }}
-source ~/.zshrc
+{{ writeToStdout "Press Enter to reload zsh config\n" -}}
+{{ writeToStdout "source ~/.zshrc" -}}
