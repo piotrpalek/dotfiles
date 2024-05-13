@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# show battery percentage
+sudo -u $(id -un) defaults write /Users/$(id -un)/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true

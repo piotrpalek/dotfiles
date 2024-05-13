@@ -6,7 +6,12 @@
         "mas",
         "chezmoi"
       ],
-      "casks": []
+      "casks": [
+        "visual-studio-code",
+      ],
+      "mas": [
+        "1352778147" // bitwarden
+      ],
     }
   }
 }

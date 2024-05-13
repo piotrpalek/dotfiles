@@ -16,3 +16,6 @@ fi
 
 # disable autocorrection
 unsetopt correct
+
+# alias
+alias vim="nvim"
