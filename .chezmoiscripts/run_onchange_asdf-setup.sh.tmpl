@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# setup plugins
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+
+# install versions
+{{ range .asdf.engines }}
+asdf install {{ .name }} {{ .version }}
+{{ end }}
+
+{{ end -}}

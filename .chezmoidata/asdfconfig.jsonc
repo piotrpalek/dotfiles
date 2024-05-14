@@ -1,0 +1,10 @@
+{
+  "asdf": {
+    "engines": [
+      {
+        "name": "nodejs",
+        "version": "latest"
+      }
+    ]
+  }
+}
