@@ -6,7 +6,16 @@ brew install --cask --adopt {{ range .packages.darwin.casks }}{{- . | quote }} {
 mas install {{ range .packages.darwin.mas }}{{- . | quote }} {{ end }}
 {{ range .packages.fonts }}
 cd ~/Library/Fonts && {
-    curl -O {{ . | quote }}
+    curl -O -L {{ . | quote }}
     cd -; }
 {{ end }}
+cd ~/Library/Fonts && {
+    {{- $name := "source-code-pro.zip" -}}
+    {{- $url := "https://github.com/adobe-fonts/source-code-pro/releases/download/2.042R-u%2F1.062R-i%2F1.026R-vf/TTF-source-code-pro-2.042R-u_1.062R-i.zip" }}
+    curl -o {{ $name | quote }} -L {{ $url | quote }}
+    unzip {{ $name | quote }}
+    rm {{ $name | quote }}
+    mv TTF/* .
+    rm -r TTF
+    cd -; }
 {{ end -}}
