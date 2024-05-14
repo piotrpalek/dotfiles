@@ -1,14 +1,17 @@
-{{ $bwEmail := promptString "What is your bitwarden email address" }}
-{{ $ghEmail := promptString "What is your github email address (for .gitconfig)" }}
-{{ $sshEmail := promptString "What is your ssh email" }}
-{{ $hostname := promptString "What is your hostname" }}
+{{- $bwEmail := promptStringOnce . "bitwardenEmail" "What is your bitwarden email address" -}}
+{{- $ghEmail := promptStringOnce . "githubCommitEmail" "What is your github email address (for .gitconfig)" -}}
+{{- $sshEmail := promptStringOnce . "sshEmail" "What is your ssh email" -}}
+{{- $hostname := promptStringOnce . "newHostname" "What is your hostname" -}}
 {
 	"data": {
 		"githubUsername": "piotrpalek",
 		"githubCommitEmail": {{ $ghEmail | quote }},
 		"sshEmail": {{ $sshEmail | quote }},
 		"bitwardenEmail": {{ $bwEmail | quote }},
-    "newHostname": {{ $hostname | quote }}
+    		"newHostname": {{ $hostname | quote }}
+	},
+	"edit": {
+		"command": "nvim"
 	}
 }
 {{ writeToStdout "Config file generated at " .chezmoi.configFile "\n" -}}
