@@ -4,4 +4,9 @@
 brew install {{ range .packages.darwin.brews }}{{- . | quote }} {{ end }}
 brew install --cask --adopt {{ range .packages.darwin.casks }}{{- . | quote }} {{ end }}
 mas install {{ range .packages.darwin.mas }}{{- . | quote }} {{ end }}
+{{ range .packages.fonts }}
+cd ~/Library/Fonts && {
+    curl -O {{ . | quote }}
+    cd -; }
+{{ end }}
 {{ end -}}
