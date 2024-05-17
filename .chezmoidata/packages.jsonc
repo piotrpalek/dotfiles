@@ -11,7 +11,8 @@
         "git",
         "mas",
         "chezmoi",
-        "ripgrep"
+        "ripgrep",
+        "anki"
       ],
       "casks": [
         "visual-studio-code",
