@@ -1,6 +1,13 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# ask for sudo upfront
+sudo -v
+
+# Keep sudo authentication alive while the script runs
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+NONINTERACTIVE /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install gh
 brew install zsh
 brew install bitwarden-cli
@@ -26,7 +33,6 @@ else
 fi
 
 export BW_SESSION=$(bw login {{ .bitwardenEmail }} --raw)
-chsh -s $(which zsh)
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 # Check if already authenticated with GitHub CLI
