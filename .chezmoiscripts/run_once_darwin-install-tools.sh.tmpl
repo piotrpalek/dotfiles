@@ -6,14 +6,33 @@ brew install zsh
 brew install bitwarden-cli
 brew install asdf
 
-# install bun
-curl -fsSL https://bun.sh/install | bash
+# check if bun is installed
+if command -v bun &> /dev/null; then
+    # try to upgrade
+    bun upgrade
+else
+    # install bun
+    curl -fsSL https://bun.sh/install | bash
+fi
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# check if rust is installed
+if command -v rustc &> /dev/null; then
+    # rust is installed, try to upgrade
+    rustup update
+else
+    # rust is not installed, install it without prompts
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+fi
 
 export BW_SESSION=$(bw login {{ .bitwardenEmail }} --raw)
 chsh -s $(which zsh)
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-gh auth login -h github.com -s admin:public_key -p ssh --skip-ssh-key -w
+
+# Check if already authenticated with GitHub CLI
+if ! gh auth status &> /dev/null; then
+    gh auth login -h github.com -s admin:public_key -p ssh --skip-ssh-key -w
+else
+  echo "GH already authenticated"
+fi
 {{ end -}}
