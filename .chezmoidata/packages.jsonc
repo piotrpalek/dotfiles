@@ -13,7 +13,9 @@
         "chezmoi",
         "ripgrep",
         "anki",
-        "nvim"
+        "nvim",
+        "fd",
+        "jesseduffield/lazygit/lazygit"
       ],
       "casks": [
         "visual-studio-code",
