@@ -12,7 +12,8 @@
         "mas",
         "chezmoi",
         "ripgrep",
-        "anki"
+        "anki",
+        "nvim"
       ],
       "casks": [
         "visual-studio-code",
@@ -29,7 +30,8 @@
         "the-unarchiver",
         "alt-tab",
         "shottr",
-        "steam"
+        "steam",
+        "neovide"
       ],
       "mas": [
         "1352778147", // bitwarden
