@@ -8,10 +8,10 @@
 		"githubCommitEmail": {{ $ghEmail | quote }},
 		"sshEmail": {{ $sshEmail | quote }},
 		"bitwardenEmail": {{ $bwEmail | quote }},
-    		"newHostname": {{ $hostname | quote }}
+    "newHostname": {{ $hostname | quote }},
 	},
 	"edit": {
-		"command": "nvim"
+		"command": "nvim",
 	}
 }
 {{ writeToStdout "Config file generated at " .chezmoi.configFile "\n" -}}

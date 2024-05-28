@@ -34,7 +34,7 @@ alias vim="nvim"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # bun completions
-[ -s "/Users/piotrpalek/.bun/_bun" ] && source "/Users/piotrpalek/.bun/_bun"
+[ -s "/Users/$HOME/.bun/_bun" ] && source "/Users/$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
